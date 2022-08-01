@@ -62,3 +62,10 @@ public func string(forKey key: String) -> String? {
     return result
 }
 ```
+
+<h4>1.2 Prototype</h4>
+
+
+
+**Value** types - has protorype behaviour outside a "box".
+**Reference** types - doesn't have.
