@@ -10,8 +10,8 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 <h3>2. Structural Design Patterns</h3>
 
 * [Adapter](#adapter) (wraps an incompatible type and exposes an interface that's familiar to the caller)
-* Decorator
-* Facade
+* [Decorator](#decorator) (allows to add new responsibilities to objects dynamically)
+* [Facade](#facade)
 * Flyweight
 * Proxy
 
@@ -162,3 +162,6 @@ extension AmazonPayments: PaymentGateway {
     }
 }
 ```
+
+<h2>2.2 Decorator</h2>
+
