@@ -11,9 +11,9 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 
 * [Adapter](#adapter) (wraps an incompatible type and exposes an interface that's familiar to the caller)
 * [Decorator](#decorator) (allows to add new responsibilities to objects dynamically)
-* [Facade](#facade)
-* Flyweight
-* Proxy
+* [Facade](#facade) (simplifies the usage of complex types)
+* [Flyweight](#flyweight)
+* [Proxy](#proxy)
 
 <h3>3. Behavioral Design Patterns</h3>
 
@@ -201,3 +201,13 @@ extension UserDefaults {
     //...
 }
 ```
+
+<h2 id="facade">2.3 Facade</h2>
+
+Problem: you have a big library but want to use only 3 functions
+
+<u>**Solution**</u>
+
+Create class in which you wrap functions from library to reuse it later - in Beta testing for instance
+
+![image-20220801180918983](https://tva1.sinaimg.cn/large/e6c9d24egy1h4ro635uixj20t60kwmxs.jpg)
