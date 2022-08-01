@@ -33,8 +33,8 @@ Execute code in serial queue
 ```swift
 public func set(value: Any, forKey key: String) {
     serialQueue.sync {
-				self.settings[key] = value
-		}
+        self.settings[key] = value
+    }
 }
 ```
 
@@ -45,9 +45,9 @@ WRITE **.async** with flags **.barrier**. Code won't be processed until all othe
 
 ```swift
 public func set(value: Any, forKey key: String) {
-  concurrentQueue.async(flags: .barrier) {
-    self.settings[key] = value
-  }
+    concurrentQueue.async(flags: .barrier) {
+      self.settings[key] = value
+    }
 }
 ```
 
@@ -55,10 +55,10 @@ READ **.sync**
 
 ```swift
 public func string(forKey key: String) -> String? {
-  var result: String?
-  concurrentQueue.sync {
-    result = self.settings[key] as? String
-  }
-  return result
+    var result: String?
+    concurrentQueue.sync {
+        result = self.settings[key] as? String
+    }
+    return result
 }
 ```
