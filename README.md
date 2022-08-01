@@ -26,3 +26,18 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 
 Concurrency issue: one thread could write to property another read from this property => crash
 
+<u>**Solution 1**</u>
+
+Execute code in serial queue
+
+![image-20220801121659795](/Users/olesnovikov/Library/Application Support/typora-user-images/image-20220801121659795.png)
+
+**<u>Solution 2</u>** (optimized for performance)
+
+Execute code in concurrent queue with reader's right lock
+WRITE **.async** with flags **.barrier**. Code won't be processed until all other operations complete
+READ **.sync** 
+
+![image-20220801121935056](/Users/olesnovikov/Library/Application Support/typora-user-images/image-20220801121935056.png)
+
+![image-20220801121948846](/Users/olesnovikov/Library/Application Support/typora-user-images/image-20220801121948846.png)
