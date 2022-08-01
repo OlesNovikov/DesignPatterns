@@ -46,7 +46,7 @@ WRITE **.async** with flags **.barrier**. Code won't be processed until all othe
 ```swift
 public func set(value: Any, forKey key: String) {
     concurrentQueue.async(flags: .barrier) {
-      self.settings[key] = value
+        self.settings[key] = value
     }
 }
 ```
@@ -65,7 +65,29 @@ public func string(forKey key: String) -> String? {
 
 <h4>1.2 Prototype</h4>
 
-
+Problem: 1 object creates in 1ms, then 1000 in 1000ms. TOO LONG! Prototype patterns helps to decrease creation time.
 
 **Value** types - has protorype behaviour outside a "box".<br>
 **Reference** types - doesn't have.
+
+<u>**Solution**</u>
+
+```swift
+class NameClass: NSCopying {
+    // other code
+    func copy(with zone: NSZone? = nil) -> Any {
+        return NameClass(firstName: self.firstName, lastName: self.lastName)
+    }
+  
+    // call this method to clone instance
+    func clone() -> NameClass {
+        return self.copy() as! NameClass
+    }
+}
+
+// using
+var steve = NameClass(firstName: "Steve", lastName: "Johnson")
+var john = steve.clone()
+```
+
+Changing john instance doesn't affect on steve object
