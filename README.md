@@ -1,13 +1,13 @@
 # DesignPatterns
- Practical Design Patterns in Swift
+This is training project taken from [Practical Design Patterns in Swift](https://www.linkedin.com/learning/practical-design-patterns-in-swift)
 
-<h3>Creational Design Patterns</h3>
+<h3>1. Creational Design Patterns</h3>
 
 * Singleton (ensures that there is only one instance of a type)
 * Prototype (concerned with the cloning of objects)
 * Factory Method (creates objects without knowing its exact type)
 
-<h3>Structural Design Patterns</h3>
+<h3>2. Structural Design Patterns</h3>
 
 * Adapter
 * Decorator
@@ -15,11 +15,11 @@
 * Flyweight
 * Proxy
 
-<h3>Behavioral Design Patterns</h3>
+<h3>3. Behavioral Design Patterns</h3>
 
 * Chain of Responsibility
 * Iterator
 * Observer
 * State
 
-<h4>Singleton</h4>
+<h4>1.1 Singleton</h4>
