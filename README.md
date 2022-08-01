@@ -4,12 +4,12 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 <h3>1. Creational Design Patterns</h3>
 
 * [Singleton](#singleton) (ensures that there is only one instance of a type)
-* <a href="prototype">Prototype</a> (concerned with the cloning of objects)
-* <a href="factory">Factory Method</a> (creates objects without knowing its exact type)
+* [Prototype](#prototype) (concerned with the cloning of objects)
+* [Factory Method](#factory) (creates objects without knowing its exact type)
 
 <h3>2. Structural Design Patterns</h3>
 
-* <a href="adapter">Adapter</a> (wraps an incompatible type and exposes an interface that's familiar to the caller)
+* [Adapter](#adapter) (wraps an incompatible type and exposes an interface that's familiar to the caller)
 * Decorator
 * Facade
 * Flyweight
