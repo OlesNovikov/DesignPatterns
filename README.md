@@ -3,13 +3,13 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 
 <h3>1. Creational Design Patterns</h3>
 
-* Singleton (ensures that there is only one instance of a type)
-* Prototype (concerned with the cloning of objects)
-* Factory Method (creates objects without knowing its exact type)
+* <a href="#singleton">Singleton</a> (ensures that there is only one instance of a type)
+* <a href="prototype">Prototype</a> (concerned with the cloning of objects)
+* <a href="factory">Factory Method</a> (creates objects without knowing its exact type)
 
 <h3>2. Structural Design Patterns</h3>
 
-* Adapter (wraps an incompatible type and exposes an interface that's familiar to the caller)
+* <a href="adapter">Adapter</a> (wraps an incompatible type and exposes an interface that's familiar to the caller)
 * Decorator
 * Facade
 * Flyweight
@@ -22,7 +22,7 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 * Observer
 * State
 
-<h2>1.1 Singleton</h2>
+<h2 id="singleton">1.1 Singleton</h2>
 
 Concurrency issue: one thread could write to property another read from this property => crash
 
@@ -63,7 +63,7 @@ public func string(forKey key: String) -> String? {
 }
 ```
 
-<h2>1.2 Prototype</h2>
+<h2 id="prototype">1.2 Prototype</h2>
 
 Problem: 1 object creates in 1ms, then 1000 in 1000ms. TOO LONG! Prototype patterns helps to decrease creation time.
 
@@ -92,7 +92,7 @@ var john = steve.clone()
 
 Changing john instance doesn't affect on steve object
 
-<h2>1.3 The Factory Method</h2>
+<h2 id="factory">1.3 The Factory Method</h2>
 
 This pattern encapsulates objects creation in one method. This method returns objects which types implements protocol.
 
@@ -118,7 +118,7 @@ struct SerializerFactory {
 
 All this classes - JSONSerializer, PropertyListSerializer, XMLSerializer - implement Serializable protocol
 
-<h2>2.1 Adapter</h2>
+<h2 id="adapter">2.1 Adapter</h2>
 
 Adapter pattern becomes a link between 3rd party library and existing source code
 
@@ -162,4 +162,3 @@ extension AmazonPayments: PaymentGateway {
     }
 }
 ```
-
