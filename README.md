@@ -91,3 +91,25 @@ var john = steve.clone()
 ```
 
 Changing john instance doesn't affect on steve object
+
+<h4>1.3 The Factory Method</h4>
+
+This pattern encapsulates objects creation in one method. This method returns objects which types implements protocol.
+
+```swift
+struct SerializerFactory {
+    
+    static func makeSerializer(_ type: Serializers) -> Serializable? {
+        let result: Serializable?
+        switch type {
+        case .json: result = JSONSerializer()
+        case .plist: result = PropertyListSerializer()
+        case .xml: result = XMLSerializer()
+        }
+        return result
+    }
+    
+}
+```
+
+All this classes - JSONSerializer, PropertyListSerializer, XMLSerializer - implement Serializable protocol
