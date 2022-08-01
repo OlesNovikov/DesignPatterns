@@ -9,7 +9,7 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 
 <h3>2. Structural Design Patterns</h3>
 
-* Adapter
+* Adapter (wraps an incompatible type and exposes an interface that's familiar to the caller)
 * Decorator
 * Facade
 * Flyweight
@@ -22,7 +22,7 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 * Observer
 * State
 
-<h4>1.1 Singleton</h4>
+<h2>1.1 Singleton</h2>
 
 Concurrency issue: one thread could write to property another read from this property => crash
 
@@ -63,7 +63,7 @@ public func string(forKey key: String) -> String? {
 }
 ```
 
-<h4>1.2 Prototype</h4>
+<h2>1.2 Prototype</h2>
 
 Problem: 1 object creates in 1ms, then 1000 in 1000ms. TOO LONG! Prototype patterns helps to decrease creation time.
 
@@ -92,9 +92,13 @@ var john = steve.clone()
 
 Changing john instance doesn't affect on steve object
 
-<h4>1.3 The Factory Method</h4>
+<h2>1.3 The Factory Method</h2>
 
 This pattern encapsulates objects creation in one method. This method returns objects which types implements protocol.
+
+Problem: objects created directly depending on each type - this is not flexible for future changing (what if you would change type?)
+
+**<u>Solution</u>**
 
 ```swift
 struct SerializerFactory {
@@ -113,3 +117,29 @@ struct SerializerFactory {
 ```
 
 All this classes - JSONSerializer, PropertyListSerializer, XMLSerializer - implement Serializable protocol
+
+<h2>2.1 Adapter</h2>
+
+Problem: third party library doesn't conform to existing protocol but has similar functionality which you need
+
+**<u>Solution</u>**
+
+Adapter pattern becomes a link between 3rd party library and existing source code
+
+```swift
+// adapter class which implements existing protocol
+class AmazonPaymentsAdapter: PaymentGateway {
+    // amazonPayments - object from 3rd party library
+    var totalPayments: Double {
+        let total = amazonPayments.payments
+        print("Total payments received via Amazon Payments: \(total)")
+        return total
+    }
+    
+    func receivePayment(amount: Double) {
+        amazonPayments.paid(value: amount, currency: "USD")
+    }
+    
+}
+```
+
