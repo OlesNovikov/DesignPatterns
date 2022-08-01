@@ -3,7 +3,7 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 
 <h3>1. Creational Design Patterns</h3>
 
-* <a href="#singleton">Singleton</a> (ensures that there is only one instance of a type)
+* [Singleton](#singleton) (ensures that there is only one instance of a type)
 * <a href="prototype">Prototype</a> (concerned with the cloning of objects)
 * <a href="factory">Factory Method</a> (creates objects without knowing its exact type)
 
