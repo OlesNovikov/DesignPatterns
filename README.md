@@ -30,14 +30,36 @@ Concurrency issue: one thread could write to property another read from this pro
 
 Execute code in serial queue
 
-![image-20220801121659795](/Users/olesnovikov/Library/Application Support/typora-user-images/image-20220801121659795.png)
+```swift
+public func set(value: Any, forKey key: String) {
+    serialQueue.sync {
+				self.settings[key] = value
+		}
+}
+```
 
 **<u>Solution 2</u>** (optimized for performance)
 
 Execute code in concurrent queue with reader's right lock
 WRITE **.async** with flags **.barrier**. Code won't be processed until all other operations complete
-READ **.sync** 
 
-![image-20220801121935056](/Users/olesnovikov/Library/Application Support/typora-user-images/image-20220801121935056.png)
+```swift
+public func set(value: Any, forKey key: String) {
+    concurrentQueue.async(flags: .barrier) {
+				self.settings[key] = value
+		}
+}
+```
 
-![image-20220801121948846](/Users/olesnovikov/Library/Application Support/typora-user-images/image-20220801121948846.png)
+READ **.sync**
+
+```swift
+public func string(forKey key: String) -> String? {
+		var result: String?
+		concurrentQueue.sync {
+				result = self.settings[key] as? String
+    }
+		return result
+}
+```
+
