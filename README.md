@@ -163,7 +163,7 @@ extension AmazonPayments: PaymentGateway {
 }
 ```
 
-<h2>2.2 Decorator</h2>
+<h2 id="decorator">2.2 Decorator</h2>
 
 Problem: you have a type and you want to expand it's functionality
 
@@ -201,4 +201,3 @@ extension UserDefaults {
     //...
 }
 ```
-
