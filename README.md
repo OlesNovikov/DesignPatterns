@@ -165,3 +165,28 @@ extension AmazonPayments: PaymentGateway {
 
 <h2>2.2 Decorator</h2>
 
+Problem: you have a type and you want to expand it's functionality
+
+**<u>Solution 1</u>**
+
+Create class inherited from target class and wrap the value. Then to create 'decorate' more functions/properties etc.
+
+```swift
+	class UserDefaultsDecorator: UserDefaults {
+    // wrapped value
+    private var userDefaults = UserDefaults.standard
+    
+    convenience init(userDefaults: UserDefaults) {
+        self.init()
+        self.userDefaults = userDefaults
+    }
+    
+    // new function
+    func set(date: Date?, forKey key: String) {
+        userDefaults.set(date, forKey: key)
+    }
+    // ...
+```
+
+**<u>Solution 2</u>**
+
