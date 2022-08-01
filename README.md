@@ -23,3 +23,6 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 * State
 
 <h4>1.1 Singleton</h4>
+
+Concurrency issue: one thread could write to property another read from this property => crash
+
