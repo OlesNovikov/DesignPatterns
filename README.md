@@ -62,4 +62,3 @@ public func string(forKey key: String) -> String? {
 		return result
 }
 ```
-
