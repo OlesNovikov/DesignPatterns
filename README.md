@@ -190,3 +190,15 @@ Create class inherited from target class and wrap the value. Then to create 'dec
 
 **<u>Solution 2</u>**
 
+Use extensions if you don't need to use stored properties / property observers
+
+```swift
+extension UserDefaults {
+    
+    func set(date: Date?, forKey key: String) {
+        self.set(date, forKey: key)
+    }
+    //...
+}
+```
+
