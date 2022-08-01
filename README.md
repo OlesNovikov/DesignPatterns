@@ -67,5 +67,5 @@ public func string(forKey key: String) -> String? {
 
 
 
-**Value** types - has protorype behaviour outside a "box".
+**Value** types - has protorype behaviour outside a "box".<br>
 **Reference** types - doesn't have.
