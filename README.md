@@ -120,11 +120,13 @@ All this classes - JSONSerializer, PropertyListSerializer, XMLSerializer - imple
 
 <h2>2.1 Adapter</h2>
 
+Adapter pattern becomes a link between 3rd party library and existing source code
+
 Problem: third party library doesn't conform to existing protocol but has similar functionality which you need
 
-**<u>Solution</u>**
+**<u>Solution 1</u>**
 
-Adapter pattern becomes a link between 3rd party library and existing source code
+Create class wrapper wich will implement existing protocol from source code
 
 ```swift
 // adapter class which implements existing protocol
@@ -140,6 +142,24 @@ class AmazonPaymentsAdapter: PaymentGateway {
         amazonPayments.paid(value: amount, currency: "USD")
     }
     
+}
+```
+
+**<u>Solution 2</u>**
+
+Create an extension to type from 3rd party library
+
+```swift
+extension AmazonPayments: PaymentGateway {
+    func receivePayment(amount: Double) {
+        self.paid(value: amount, currency: "USD")
+    }
+    
+    var totalPayments: Double {
+        let total = self.payments
+        print("Total payments received via Amazon Payments: \(total)")
+        return total
+    }
 }
 ```
 
