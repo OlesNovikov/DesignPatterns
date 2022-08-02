@@ -17,10 +17,10 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 
 <h3>3. Behavioral Design Patterns</h3>
 
-* Chain of Responsibility
-* Iterator
-* Observer
-* State
+* [Chain of Responsibility](#chain)
+* [Iterator](#iterator)
+* [Observer](#observer)
+* [State](#state)
 
 
 
@@ -275,3 +275,16 @@ class RandomIntWithID {
 
 
 
+<h2 id="chain">2.6 The Chain of Responsibility</h2>
+
+
+
+<h2 id="iterator">2.7 Iterator</h2>
+
+
+
+<h2 id="observer">2.8 Observer</h2>
+
+
+
+<h2 id="state">2.9 State</h2>
