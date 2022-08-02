@@ -18,7 +18,7 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 <h3>3. Behavioral Design Patterns</h3>
 
 * [Chain of Responsibility](#chain)
-* [Iterator](#iterator)
+* [Iterator](#iterator) (provides sequential access to the elements of an aggregate object)
 * [Observer](#observer)
 * [State](#state)
 
