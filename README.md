@@ -12,7 +12,7 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 * [Adapter](#adapter) (wraps an incompatible type and exposes an interface that's familiar to the caller)
 * [Decorator](#decorator) (allows to add new responsibilities to objects dynamically)
 * [Facade](#facade) (simplifies the usage of complex types)
-* [Flyweight](#flyweight)
+* [Flyweight](#flyweight) (reduces memory usage by sharing common data between objects)
 * [Proxy](#proxy)
 
 <h3>3. Behavioral Design Patterns</h3>
@@ -211,3 +211,27 @@ Problem: you have a big library but want to use only 3 functions
 Create class in which you wrap functions from library to reuse it later - in Beta testing for instance
 
 ![image-20220801180918983](https://tva1.sinaimg.cn/large/e6c9d24egy1h4ro635uixj20t60kwmxs.jpg)
+
+<h2 id="flyweight">2.4 Flyweight</h2>
+
+Problem: you have to creat 1000 shaceships. 1 spaceship == 300 KB of memory -> 1000 spaceships == 300 MB of memory.
+
+**<u>Solution</u>**
+
+Create reference type object with common data shared with other 1000 "spaceships" to use.
+
+```swift
+// every spaceship have mesh and texture
+class SharedSpaceShipData {
+    private let mesh: [Float]
+    private let texture: UIImage?
+    //...
+}
+// spaceship class with reference to common data in shared spaceship data object
+class SpaceShip {
+    private var position: (Float, Float, Float)
+    private var intrisicState: SharedSpaceShipData
+    //...
+}
+```
+
