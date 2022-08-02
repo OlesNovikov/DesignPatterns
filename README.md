@@ -281,6 +281,41 @@ class RandomIntWithID {
 
 <h2 id="iterator">2.7 Iterator</h2>
 
+Problem: you want to create class that can be iterated (to use your object in for-in loop)
+
+**<u>Solution</u>**
+
+You need to create structure which implements `IteratorProtocol` and implement `Sequence` protocol in **your** class
+
+```swift
+// custom queue which implements protocol Sequence
+extension Queue: Sequence {
+    
+    func makeIterator() -> QueueIterator<T> {
+        return QueueIterator(self)
+    }
+    
+}
+
+// queue iterator which helps to iterate through the queue
+struct QueueIterator<T>: IteratorProtocol {
+    private let queue: Queue<T>
+    private var currentNode: Node<T>?
+    
+    init(_ queue: Queue<T>) {
+        self.queue = queue
+        currentNode = queue.head
+    }
+    
+    mutating func next() -> T? {
+        guard let node = currentNode else { return nil }
+        let nextKey = currentNode?.key
+        currentNode = node.next
+        return nextKey
+    }
+}
+```
+
 
 
 <h2 id="observer">2.8 Observer</h2>
