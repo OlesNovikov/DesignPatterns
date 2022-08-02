@@ -13,7 +13,7 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 * [Decorator](#decorator) (allows to add new responsibilities to objects dynamically)
 * [Facade](#facade) (simplifies the usage of complex types)
 * [Flyweight](#flyweight) (reduces memory usage by sharing common data between objects)
-* [Proxy](#proxy)
+* [Proxy](#proxy) (manage and controll access to specific objects)
 
 <h3>3. Behavioral Design Patterns</h3>
 
@@ -21,6 +21,8 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 * Iterator
 * Observer
 * State
+
+
 
 <h2 id="singleton">1.1 Singleton</h2>
 
@@ -63,6 +65,8 @@ public func string(forKey key: String) -> String? {
 }
 ```
 
+
+
 <h2 id="prototype">1.2 Prototype</h2>
 
 Problem: 1 object creates in 1ms, then 1000 in 1000ms. TOO LONG! Prototype patterns helps to decrease creation time.
@@ -92,6 +96,8 @@ var john = steve.clone()
 
 Changing john instance doesn't affect on steve object
 
+
+
 <h2 id="factory">1.3 The Factory Method</h2>
 
 This pattern encapsulates objects creation in one method. This method returns objects which types implements protocol.
@@ -117,6 +123,8 @@ struct SerializerFactory {
 ```
 
 All this classes - JSONSerializer, PropertyListSerializer, XMLSerializer - implement Serializable protocol
+
+
 
 <h2 id="adapter">2.1 Adapter</h2>
 
@@ -163,6 +171,9 @@ extension AmazonPayments: PaymentGateway {
 }
 ```
 
+
+
+
 <h2 id="decorator">2.2 Decorator</h2>
 
 Problem: you have a type and you want to expand it's functionality
@@ -202,6 +213,8 @@ extension UserDefaults {
 }
 ```
 
+
+
 <h2 id="facade">2.3 Facade</h2>
 
 Problem: you have a big library but want to use only 3 functions
@@ -211,6 +224,8 @@ Problem: you have a big library but want to use only 3 functions
 Create class in which you wrap functions from library to reuse it later - in Beta testing for instance
 
 ![image-20220801180918983](https://tva1.sinaimg.cn/large/e6c9d24egy1h4ro635uixj20t60kwmxs.jpg)
+
+
 
 <h2 id="flyweight">2.4 Flyweight</h2>
 
@@ -234,4 +249,29 @@ class SpaceShip {
     //...
 }
 ```
+
+
+
+<h2 id="proxy">2.5 Proxy</h2>
+
+Problem: additional functionality may be needed while accessing an object (DB for instance. You are not using DB directly)
+
+<u>**Solution**</u>
+
+```swift
+class RandomIntWithID {
+    var value: Int = {
+        print("value initialized")
+        return Int.random(in: Int.min...Int.max)
+    }()
+  
+    // property will be initialized only after first call
+    lazy var uid: String = {
+        print("uid initialized")
+        return UUID().uuidString
+    }()
+}
+```
+
+
 
