@@ -19,8 +19,8 @@ This is training project taken from [Practical Design Patterns in Swift](https:/
 
 * [Chain of Responsibility](#chain)
 * [Iterator](#iterator) (provides sequential access to the elements of an aggregate object)
-* [Observer](#observer)
-* [State](#state)
+* [Observer](#observer) (lets objects subscribe for notifications without being tightly coupled to the sender)
+* [State](#state) (replaces complex conditional logic with an object-oriented state machine)
 
 
 
@@ -319,6 +319,42 @@ struct QueueIterator<T>: IteratorProtocol {
 
 
 <h2 id="observer">2.8 Observer</h2>
+
+Problem: you need to know when some object updates it's state
+
+**<u>Solution</u>**
+
+Subject notifies objects when it's state changed. All objects must implement subject's protocol with `notify()` method
+
+<img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h4tld52o54j20w60ewgmb.jpg" width="600">
+
+```swift
+protocol Observer {
+    func notify()
+    var uid: Int { get }
+}
+// UIButton - subject
+// UILabel - observer
+extension UILabel: Observer {
+    var uid: Int {
+        return ObjectIdentifier(self).hashValue
+    }
+    func notify() {
+        self.text = "Subject state changed"
+    }
+}
+
+extension UIButton: Subject {
+  // register(), unregister() methods
+  
+  // method to send notification
+  func onStateChanged() {
+        UIButton.observers.forEach { observer in
+            observer.notify()
+        }
+    }
+}
+```
 
 
 
