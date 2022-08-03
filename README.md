@@ -277,7 +277,11 @@ class RandomIntWithID {
 
 <h2 id="chain">2.6 The Chain of Responsibility</h2>
 
+Problem: you need to handle a request through N handlers. e.g. in authorisation.
 
+**<u>Solution</u>**
+
+Link handlers in one chain. Every handler will have a reference to next handler. So if request will fail on 3rd handler there is no need to use handler after third (obviously).
 
 <h2 id="iterator">2.7 Iterator</h2>
 
@@ -359,3 +363,37 @@ extension UIButton: Subject {
 
 
 <h2 id="state">2.9 State</h2>
+
+Problem: you have a lot of condition statements through which object must pass. Code will increase in size
+
+<u>**Solution**</u>
+
+Identify the states in which your object could be. Create protocol that will be implemented in all object state classes. Use object's state later
+
+```swift
+fileprivate protocol CoffeeMachineState {
+    func isReadyToBrew() -> Bool
+    func brew()
+}
+
+// ... default implementstion in CoffeeMachineState extension ...
+
+// state #1
+fileprivate struct StandbyState: CoffeeMachineState {
+    // your logic    
+}
+
+// state #2
+fileprivate struct FillWaterTankState: CoffeeMachineState {
+    var context: CoffeeMachine
+  	// your logic
+}
+// other states
+
+// main object to controll it's state
+class CoffeeMachine {
+    // ...
+    fileprivate var state: CoffeeMachineState = StandbyState()
+}
+```
+
